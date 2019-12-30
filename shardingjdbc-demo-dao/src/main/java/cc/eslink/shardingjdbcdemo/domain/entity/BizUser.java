@@ -4,6 +4,7 @@ import cc.eslink.common.base.BaseDomain;
 
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -100,6 +101,16 @@ public class BizUser extends BaseDomain {
 	private Date modifyTime;
 
 	//=================================================
+
+	private List<BizAddress> addressList;
+
+	public List<BizAddress> getAddressList() {
+		return addressList;
+	}
+
+	public void setAddressList(List<BizAddress> addressList) {
+		this.addressList = addressList;
+	}
 
 	public void setUserId(String userId){
 		this.userId = userId;

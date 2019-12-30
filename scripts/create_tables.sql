@@ -128,3 +128,6 @@ CREATE TABLE `safe_cycle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='安检周期表';
 
 
+-- 分区表
+CREATE TABLE biz_user_1P01 LIKE biz_user;
+CREATE TABLE biz_address_1P01 LIKE biz_address;

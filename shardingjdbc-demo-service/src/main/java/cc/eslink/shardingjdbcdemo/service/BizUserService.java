@@ -5,6 +5,7 @@ import cc.eslink.shardingjdbcdemo.domain.entity.BizUser;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  *@ClassName BizUserService
@@ -19,7 +20,23 @@ public class BizUserService {
     @Resource
     private BizUserDao bizUserDao;
 
-    public void insert(BizUser bizUser) {
-        bizUserDao.insert(bizUser);
+    public int insert(BizUser bizUser) {
+        return bizUserDao.insert(bizUser);
+    }
+
+    public int insertBatch(List<BizUser> list) {
+        return bizUserDao.insertList(list);
+    }
+
+    public BizUser getById(String userId) {
+        return bizUserDao.selectById(userId);
+    }
+
+    public BizUser getByTenantAndId(String tenantId, String userId) {
+        return bizUserDao.selectByTenantAndId(tenantId, userId);
+    }
+
+    public BizUser getDetailByTenantAndId(String tenantId, String userId) {
+        return bizUserDao.selectDetailByTenantAndId(tenantId, userId);
     }
 }

@@ -80,13 +80,20 @@
         <property name="resultSetLogEnabled" value="false"/>
     </bean>
 
-    <sharding:inline-strategy id="userTableStrategy" sharding-column="tenant_id"
-                              algorithm-expression="biz_user"/>
+    <!--<sharding:inline-strategy id="userTableStrategy" sharding-column="tenant_id"
+                              algorithm-expression="biz_user"/>-->
+
+    <bean id="MyComplexKeysShardingAlgorithm" class="cc.eslink.shardingjdbcdemo.strategy.MyComplexKeysShardingAlgorithm"/>
+    <sharding:complex-strategy id="tableStrategy" sharding-columns="tenant_id" algorithm-ref="MyComplexKeysShardingAlgorithm"/>
 
     <sharding:data-source id="shardingDataSource">
+        <sharding:props>
+            <prop key="sql.show">true</prop>
+        </sharding:props>
         <sharding:sharding-rule data-source-names="dataSource">
             <sharding:table-rules>
-                <sharding:table-rule logic-table="biz_user" table-strategy-ref="userTableStrategy"/>
+                <sharding:table-rule logic-table="biz_user" table-strategy-ref="tableStrategy"/>
+                <sharding:table-rule logic-table="biz_address" table-strategy-ref="tableStrategy"/>
             </sharding:table-rules>
         </sharding:sharding-rule>
     </sharding:data-source>
