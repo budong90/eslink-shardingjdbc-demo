@@ -9,6 +9,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eslink-shardingjdbc-demo</artifactId>
     <packaging>pom</packaging>
+
+    <properties>
+        <sharding-sphere.version>4.0.0-RC3</sharding-sphere.version>
+    </properties>
     
     <modules>
         <module>shardingjdbc-demo-controller</module>

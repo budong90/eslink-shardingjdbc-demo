@@ -1,1 +1,4 @@
 /.idea/
+/shardingjdbc-demo-service/target/classes/cc/eslink/shardingjdbcdemo/service/
+/shardingjdbc-demo-dao/target/classes/cc/eslink/shardingjdbcdemo/
+/shardingjdbc-demo-controller/target/
