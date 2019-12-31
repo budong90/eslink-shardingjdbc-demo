@@ -39,7 +39,7 @@ public class Tests extends BaseTest {
      **/
     @org.junit.Test
     public void test() {
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 1; i++) {
             BizUser bizUser = new BizUser();
             String tenantId = tenantIds[(int) (Math.random() * (max - min) + min)];
             bizUser.setTenantId(tenantId);
@@ -178,5 +178,11 @@ public class Tests extends BaseTest {
             list.add(bizUser);
         }
         bizUserService.insertBatch(list);
+    }
+
+    @Test
+    public void test8() {
+        BizAddress bizAddress = bizAddressDao.getByTenantAndId("1P01", "2019123018011526695897849696");
+        System.out.println(bizAddress);
     }
 }
