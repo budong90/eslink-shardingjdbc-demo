@@ -161,4 +161,22 @@ public class Tests extends BaseTest {
             }
         }
     }
+
+    @org.junit.Test
+    public void test7() {
+        int i = 1;
+        List<BizUser> list = new ArrayList<>();
+        for (String tenantId : tenantIds) {
+            BizUser bizUser = new BizUser();
+            bizUser.setTenantId(tenantId);
+            bizUser.setUserId(IDUtil.getUniqueId());
+            String str = "10000" + i;
+            str = str.substring((i + "").length());
+            bizUser.setUserNo(str);
+            bizUser.setUserName("test" + str);
+            i++;
+            list.add(bizUser);
+        }
+        bizUserService.insertBatch(list);
+    }
 }

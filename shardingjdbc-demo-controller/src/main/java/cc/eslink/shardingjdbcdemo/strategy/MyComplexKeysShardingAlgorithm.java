@@ -6,7 +6,6 @@ import org.apache.shardingsphere.api.sharding.complex.ComplexKeysShardingValue;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *@ClassName MyComplexKeysShardingAlgorithm
@@ -22,12 +21,14 @@ public class MyComplexKeysShardingAlgorithm implements ComplexKeysShardingAlgori
     public Collection<String> doSharding(Collection availableTargetNames, ComplexKeysShardingValue shardingValue) {
         List<String> shardingResults = new ArrayList<>();
         String tenantId = ((List<String>) shardingValue.getColumnNameAndShardingValuesMap().get("tenant_id")).get(0);
-        String logicTableName = shardingValue.getLogicTableName();
+        String tableName = (String) availableTargetNames.iterator().next();
         if ("1P01".equals(tenantId)) {
-            shardingResults.add(logicTableName + "_" + tenantId.toLowerCase());
+            shardingResults.add(tableName + "_" + tenantId.toLowerCase());
         } else {
-            shardingResults.add(logicTableName);
+            shardingResults.add(tableName);
         }
+        System.out.println("availableTargetNames=" + availableTargetNames);
+        System.out.println("shardingValue=" + shardingValue);
         System.out.println(String.format("分片结果-----------------------------tenantId=%s,shardingResults=%s-----------------------------", tenantId, shardingResults));
         return shardingResults;
     }
